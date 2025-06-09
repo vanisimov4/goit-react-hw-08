@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
-import { IoCall, IoPerson } from "react-icons/io5";
+import { useDispatch } from 'react-redux';
+import { IoCall, IoPerson } from 'react-icons/io5';
 
-import { deleteContact } from "../../redux/contactsOps";
-import css from "./Contact.module.css";
+import { deleteContact } from '../../redux/contacts/operations';
+import css from './Contact.module.css';
 
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();

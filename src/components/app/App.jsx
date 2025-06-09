@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "../../redux/contactsOps";
-import ContactForm from "../contactForm/ContactForm";
-import SearchBox from "../searchBox/SearchBox";
-import ContactList from "../contactList/ContactList";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from '../../redux/contacts/operations';
+import ContactForm from '../contactForm/ContactForm';
+import SearchBox from '../searchBox/SearchBox';
+import ContactList from '../contactList/ContactList';
 import {
   selectContacts,
   selectLoading,
   selectError,
-} from "../../redux/contactsSlice";
-import "./App.css";
+} from '../../redux/contacts/slice';
+import './App.css';
 
 function App() {
   const loading = useSelector(selectLoading);
