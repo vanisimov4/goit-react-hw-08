@@ -1,0 +1,13 @@
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 16px;
+}
+
+.contact p {
+  text-align: start;
+}
