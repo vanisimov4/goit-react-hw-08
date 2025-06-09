@@ -1,6 +1,6 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operations.js';
-import { selectNameFilter } from '../filters/slice';
+// import { selectNameFilter } from '../filters/selectors.js';
 
 const handlePending = state => {
   state.loading = true;
@@ -52,19 +52,19 @@ const slice = createSlice({
 // Експортуємо редюсер слайсу
 export default slice.reducer;
 
-export const selectContacts = state => state.contacts.items;
+// export const selectContacts = state => state.contacts.items;
 
-export const selectLoading = state => state.contacts.loading;
+// export const selectLoading = state => state.contacts.loading;
 
-export const selectError = state => state.contacts.error;
+// export const selectError = state => state.contacts.error;
 
-//  Оголошуємо селектор
-export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
-  (contList, searchValue) => {
-    //  Повертаємо результат обчислень
-    return contList.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
-    );
-  }
-);
+// //  Оголошуємо селектор
+// export const selectFilteredContacts = createSelector(
+//   [selectContacts, selectNameFilter],
+//   (contList, searchValue) => {
+//     //  Повертаємо результат обчислень
+//     return contList.filter(contact =>
+//       contact.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
+//     );
+//   }
+// );

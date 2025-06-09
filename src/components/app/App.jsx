@@ -8,7 +8,7 @@ import {
   selectContacts,
   selectLoading,
   selectError,
-} from '../../redux/contacts/slice';
+} from '../../redux/contacts/selectors';
 import './App.css';
 
 function App() {
