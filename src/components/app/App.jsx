@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
-// import Layout from '../Layout/Layout';
+import Layout from '../Layout/Layout';
 import ContactForm from '../contactForm/ContactForm';
 import SearchBox from '../searchBox/SearchBox';
 import ContactList from '../contactList/ContactList';
@@ -34,24 +34,24 @@ function App() {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    // <Layout>
-    <div className="mainWrapper">
-      <h1>Phonebook</h1>
-      <Suspense fallback={null}>
-        {/* <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegistrationPage />} />
+    <Layout>
+      <div className="mainWrapper">
+        <h1>Phonebook</h1>
+        <Suspense fallback={null}>
+          <Routes>
+            {/* <Route path="/" element={<HomePage />} /> */}
+            {/* <Route path="/register" element={<RegistrationPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-        </Routes> */}
-      </Suspense>
-      <ContactForm />
-      <SearchBox />
-      {loading && <p>Loading contacts...</p>}
-      {error && <p>{error}</p>}
-      {contacts.length && <ContactList />}
-    </div>
-    // </Layout>
+          <Route path="/contacts" element={<ContactsPage />} /> */}
+          </Routes>
+        </Suspense>
+        <ContactForm />
+        <SearchBox />
+        {loading && <p>Loading contacts...</p>}
+        {error && <p>{error}</p>}
+        {contacts.length && <ContactList />}
+      </div>
+    </Layout>
   );
 }
 
