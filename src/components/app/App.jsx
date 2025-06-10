@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../redux/contacts/operations';
-import ContactForm from '../contactForm/ContactForm';
-import SearchBox from '../searchBox/SearchBox';
-import ContactList from '../contactList/ContactList';
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContacts } from "../../redux/contacts/operations";
+import ContactForm from "../contactForm/ContactForm";
+import SearchBox from "../searchBox/SearchBox";
+import ContactList from "../contactList/ContactList";
 import {
   selectContacts,
   selectLoading,
   selectError,
-} from '../../redux/contacts/selectors';
-import './App.css';
+} from "../../redux/contacts/selectors";
+import "./App.css";
 
 function App() {
   const loading = useSelector(selectLoading);
@@ -24,11 +26,16 @@ function App() {
   return (
     <div className="mainWrapper">
       <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading && <p>Loading contacts...</p>}
-      {error && <p>{error}</p>}
-      {contacts.length && <ContactList />}
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={ }/>
+          <ContactForm />
+          <SearchBox />
+          {loading && <p>Loading contacts...</p>}
+          {error && <p>{error}</p>}
+          {contacts.length && <ContactList />}
+        </Routes>
+      </Suspense>
     </div>
   );
 }

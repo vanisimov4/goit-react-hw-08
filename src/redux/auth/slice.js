@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const slice = createSlice({
-  name: 'auth',
+const authSlice = createSlice({
+  name: "auth",
   initialState: {
     user: {
       name: null,
@@ -13,4 +13,4 @@ const slice = createSlice({
   },
 });
 
-export default slice.reducer;
+export default authSlice.reducer;
