@@ -12,7 +12,7 @@ import {
   selectLoading,
   selectError,
 } from '../../redux/contacts/selectors';
-import './App.css';
+import css from './App.module.css';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const RegistrationPage = lazy(() =>
@@ -35,11 +35,11 @@ function App() {
   }, [dispatch]);
   return (
     <Layout>
-      <div className="mainWrapper">
+      <div className={css.mainWrapper}>
         <h1>Phonebook</h1>
         <Suspense fallback={null}>
           <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
+            <Route path="/" element={<HomePage />} />
             {/* <Route path="/register" element={<RegistrationPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/contacts" element={<ContactsPage />} /> */}
