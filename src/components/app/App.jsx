@@ -35,14 +35,14 @@ function App() {
   }, [dispatch]);
   return (
     <Layout>
-      <div className={css.mainWrapper}>
+      <div className={css.wrapper}>
         <h1>Phonebook</h1>
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} /> */}
+            <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
           </Routes>
         </Suspense>
         <ContactForm />

@@ -1,4 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import css from './RegistrationForm.module.css';
 
 const initialValues = {
   name: '',
@@ -6,7 +7,7 @@ const initialValues = {
   password: '',
 };
 
-export default function RegisterForm() {
+export default function RegistrationForm() {
   const handleSubmit = (values, actions) => {
     console.log(values);
     actions.resetForm();
@@ -14,16 +15,16 @@ export default function RegisterForm() {
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      <Form className="css.form" autoComplete="off">
-        <label className="css.label">
+      <Form className={css.form} autoComplete="off">
+        <label className={css.label}>
           Username
           <Field type="text" name="name" />
         </label>
-        <label className="css.lsbel">
+        <label className={css.label}>
           Email
           <Field type="email" name="email" />
         </label>
-        <label className="css.label">
+        <label className={css.label}>
           Passowrd
           <Field type="password" name="password" />
         </label>
