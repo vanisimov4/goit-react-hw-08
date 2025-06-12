@@ -1,5 +1,5 @@
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // Встановлюємо базову URL-адресу
 // для всіх запитів axios
@@ -7,10 +7,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 // axios.defaults.baseURL = 'https://connections-api.goit.global/';
 
 export const fetchContacts = createAsyncThunk(
-  "contacts/fetchAll",
+  'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/contacts");
+      const response = await axios.get('/contacts');
       // При успішному запиті повертаємо проміс із даними
       return response.data;
     } catch (e) {
@@ -22,10 +22,10 @@ export const fetchContacts = createAsyncThunk(
 );
 
 export const addContact = createAsyncThunk(
-  "contacts/addContact",
+  'contacts/addContact',
   async (nextRecord, thunkAPI) => {
     try {
-      const response = await axios.post("/contacts", nextRecord);
+      const response = await axios.post('/contacts', nextRecord);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -34,7 +34,7 @@ export const addContact = createAsyncThunk(
 );
 
 export const deleteContact = createAsyncThunk(
-  "contacts/deleteTask",
+  'contacts/deleteTask',
   async (contactsId, thunkAPI) => {
     try {
       const response = await axios.delete(`/contacts/${contactsId}`);
