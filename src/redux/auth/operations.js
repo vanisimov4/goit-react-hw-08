@@ -8,7 +8,19 @@ axios.defaults.baseURL = "https://connections-api.goit.global/";
  * POST @ /users/signup
  * body: { name, email, password }
  */
-export const register = createAsyncThunk("auth/register", async () => {});
+export const register = createAsyncThunk(
+  "auth/register",
+  async (credentials) => {
+    try {
+      const res = await axios.post("/users/signup", credentials);
+      // After successful registration, add the token to the HTTP header
+      //   setAuthHeader(res.data.token);
+      return res.data;
+    } catch (error) {
+      //   return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 /*
  * POST @ /users/login
