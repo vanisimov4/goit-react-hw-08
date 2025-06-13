@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations.js';
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchContacts, addContact, deleteContact } from "./operations.js";
+import { logOut } from "../auth/operations";
 // import { selectNameFilter } from '../filters/selectors.js';
 
-const handlePending = state => {
+const handlePending = (state) => {
   state.loading = true;
 };
 
@@ -13,7 +14,7 @@ const handleRejected = (state, action) => {
 
 const slice = createSlice({
   // Ім'я слайсу
-  name: 'contacts',
+  name: "contacts",
   // Початковий стан редюсера слайсу
   initialState: {
     items: [],
@@ -21,7 +22,7 @@ const slice = createSlice({
     error: null,
   },
   // Додаємо обробку зовнішніх екшенів
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, handlePending)
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -42,10 +43,15 @@ const slice = createSlice({
         state.loading = false;
         state.error = null;
         state.items = state.items.filter(
-          contacts => contacts.id !== action.payload.id
+          (contacts) => contacts.id !== action.payload.id
         );
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+        state.error = null;
+        state.isLoading = false;
+      });
   },
 });
 
