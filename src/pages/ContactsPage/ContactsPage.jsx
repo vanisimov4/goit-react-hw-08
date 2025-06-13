@@ -17,9 +17,9 @@ export default function ContactsPage() {
   const dispatch = useDispatch();
 
   // Викликаємо операцію
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
   return (
     <div>
       <ContactForm />
