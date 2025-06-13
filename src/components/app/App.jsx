@@ -1,34 +1,35 @@
-import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 // import { fetchContacts } from '../../redux/contacts/operations';
-import Layout from "../Layout/Layout";
+import Layout from '../Layout/Layout';
 // import ContactForm from '../contactForm/ContactForm';
 // import SearchBox from '../searchBox/SearchBox';
 // import ContactList from '../contactList/ContactList';
-import {
-  selectContacts,
-  selectLoading,
-  selectError,
-} from "../../redux/contacts/selectors";
-import { refreshUser } from "../../redux/auth/operations";
-import css from "./App.module.css";
+// import {
+//   selectContacts,
+//   selectLoading,
+//   selectError,
+// } from '../../redux/contacts/selectors';
+import { refreshUser } from '../../redux/auth/operations';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
+import css from './App.module.css';
 
-const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const RegistrationPage = lazy(() =>
-  import("../../pages/RegistrationPage/RegistrationPage")
+  import('../../pages/RegistrationPage/RegistrationPage')
 );
-const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 const ContactsPage = lazy(() =>
-  import("../../pages/ContactsPage/ContactsPage")
+  import('../../pages/ContactsPage/ContactsPage')
 );
 
 function App() {
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-  const contacts = useSelector(selectContacts);
+  // const loading = useSelector(selectLoading);
+  // const error = useSelector(selectError);
+  // const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -38,7 +39,9 @@ function App() {
   // useEffect(() => {
   //   dispatch(fetchContacts());
   // }, [dispatch]);
-  return (
+  return isRefreshing ? (
+    <strong>Refreshing user...</strong>
+  ) : (
     <div className={css.wrapper}>
       <Layout>
         <h1>Phonebook</h1>
