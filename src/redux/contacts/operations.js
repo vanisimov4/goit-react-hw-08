@@ -1,11 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// Встановлюємо базову URL-адресу
-// для всіх запитів axios
-// axios.defaults.baseURL = 'https://683576c8cd78db2058c19d08.mockapi.io';
-// axios.defaults.baseURL = 'https://connections-api.goit.global/';
-
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {

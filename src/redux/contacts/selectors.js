@@ -12,8 +12,12 @@ export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contList, searchValue) => {
     //  Повертаємо результат обчислень
-    return contList.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
+    return contList.filter(
+      contact =>
+        contact.name
+          .toLocaleLowerCase()
+          .includes(searchValue.toLocaleLowerCase()) ||
+        contact.number.toLowerCase().includes(searchValue.toLowerCase())
     );
   }
 );
